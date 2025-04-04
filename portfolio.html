@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amos Clinton Wanyangu - IT Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --info: #2980b9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        /* About Section */
+        .about-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 3px solid white;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .timeline-description {
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description li {
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skills-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .skills-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background-color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item i {
+            color: var(--primary);
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-item {
+            background-color: var(--light);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .center-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .btn-outline {
+        display: inline-block;
+        padding: 5px 10px;
+        color: #007bff;
+        border: 2px solid #007bff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+        background-color: #007bff;
+        color: white;
+        }
+        /* References */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .reference-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .reference-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .reference-title {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .reference-contact {
+            margin-top: 1rem;
+        }
+
+        .reference-contact a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .reference-contact a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-links.active {
+                max-height: 300px;
+                padding: 1rem 0;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .skills-container, .portfolio-grid, .references-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, footer {
+                display: none;
+            }
+
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12pt;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0;
+            }
+
+            section {
+                padding: 1rem 0;
+                page-break-inside: avoid;
+            }
+
+            .portfolio-item {
+                page-break-inside: avoid;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .contact-item a::after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                font-weight: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <img src="Images/Profile.jpg" alt="Amos Clinton Wanyangu" class="profile-img">
+            <h1>Amos Clinton Wanyangu</h1>
+            <p class="title">Bachelor of Science Information Technology</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+254114290760">+254 114 290 760</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:amosclinton196@gmail.com">amosclinton196@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/Wanyangu1" target="_blank">Wanyangu1</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="https://acw-portfolio.afroartsafary.com/" target="_blank">My Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div><img src="Images/logo.png"  style="height: 50px; width: 80px;" alt="Clinton"></div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#references">References</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Career Objective</h2>
+            </div>
+            <div class="about-content">
+                <p>I am a self-motivated, detail-oriented professional with a solid technical background, passionate about using my problem-solving skills to make a meaningful impact. I seek opportunities in software development and technology to drive innovation and deliver valuable results for your organization.</p>
+            <div class="center-screen">
+                <a href="AMOS WANYANGU C.V.pdf" download class="btn-outline">Download My CV</a>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">September 2020 – April 2024</div>
+                    <h3 class="timeline-title">Bachelor of Science in Information Technology (Second Upper)</h3>
+                    <p class="timeline-subtitle">Kisii University, Kenya</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 – 2019</div>
+                    <h3 class="timeline-title">Kenya Certificate of Secondary Education</h3>
+                    <p class="timeline-subtitle">Kapenguria Boys High School, Kenya</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2007 – 2015</div>
+                    <h3 class="timeline-title">Kenya Certificate of Primary Education</h3>
+                    <p class="timeline-subtitle">Bethsaida Academy, Kenya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">April 2024 – Present</div>
+                    <h3 class="timeline-title">Intern</h3>
+                    <p class="timeline-subtitle">Artificial Intelligence Alliance in Agriculture (AIAA) NGO</p>
+                    <ul class="timeline-description">
+                        <li>Contributed to developing the Agri-pulse system, a Kenyan solution aimed at transforming the agricultural value chain.</li>
+                        <li>Developed custom software solutions, integrating AI components into enterprise systems.</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2023 – July 2023</div>
+                    <h3 class="timeline-title">Attachment</h3>
+                    <p class="timeline-subtitle">County Government of Trans Nzoia</p>
+                    <ul class="timeline-description">
+                        <li>Gained experience in hardware and software maintenance, including preventive procedures.</li>
+                        <li>Participated in database administration, network maintenance, and software projects.</li>
+                        <li>Enhanced skills in technical troubleshooting, system administration, and teamwork.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skills-card">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-list">
+                        <span class="skill-item"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="skill-item"><i class="fab fa-python"></i> Python</span>
+                        <span class="skill-item"><i class="fab fa-java"></i> Java</span>
+                    </div>
+                </div>
+                
+                <div class="skills-card">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skills-list">
+                        <span class="skill-item"><i class="fas fa-code"></i> Django</span>
+                        <span class="skill-item"><i class="fab fa-vuejs"></i> Vue.js</span>
+                        <span class="skill-item"><i class="fab fa-react"></i> React</span>
+                        <span class="skill-item"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                        <span class="skill-item"><i class="fas fa-wind"></i> Tailwind</span>
+                    </div>
+                </div>
+                
+                <div class="skills-card">
+                    <h3>Database Management</h3>
+                    <div class="skills-list">
+                        <span class="skill-item"><i class="fas fa-database"></i> Firebase</span>
+                        <span class="skill-item"><i class="fas fa-database"></i> MySQL</span>
+                        <span class="skill-item"><i class="fas fa-database"></i> PostgreSQL</span>
+                    </div>
+                </div>
+                
+                <div class="skills-card">
+                    <h3>Development Tools</h3>
+                    <div class="skills-list">
+                        <span class="skill-item"><i class="fas fa-code"></i> VS Code</span>
+                        <span class="skill-item"><i class="fas fa-code"></i> Eclipse</span>
+                        <span class="skill-item"><i class="fas fa-code"></i> NetBeans</span>
+                        <span class="skill-item"><i class="fab fa-github"></i> GitHub</span>
+                        <span class="skill-item"><i class="fab fa-android"></i> Android Studio</span>
+                        <span class="skill-item"><i class="fas fa-book"></i> Jupyter Notebook</span>
+                    </div>
+                </div>
+                
+                <div class="skills-card">
+                    <h3>Soft Skills</h3>
+                    <div class="skills-list">
+                        <span class="skill-item"><i class="fas fa-brain"></i> Problem Solving</span>
+                        <span class="skill-item"><i class="fas fa-clock"></i> Time Management</span>
+                        <span class="skill-item"><i class="fas fa-users"></i> Teamwork</span>
+                        <span class="skill-item"><i class="fas fa-comments"></i> Communication</span>
+                        <span class="skill-item"><i class="fas fa-random"></i> Adaptability</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio & Achievements</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AfroArtsAfry">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>AfroArtsAfry.com</h3>
+                        <div class="portfolio-tech">
+                            <span class="tech-item">Django</span>
+                            <span class="tech-item">Vue.js</span>
+                            <span class="tech-item">SQLite</span>
+                            <span class="tech-item">Bootstrap</span>
+                        </div>
+                        <p>A dynamic tours and travel booking platform offering hotel bookings, flight management, and car rentals.</p>
+                        <a href="https://afroartsafary.com/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="RonaldTombe">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>RonaldTombe.co.ke</h3>
+                        <div class="portfolio-tech">
+                            <span class="tech-item">Django</span>
+                            <span class="tech-item">Vue.js</span>
+                            <span class="tech-item">SQLite</span>
+                            <span class="tech-item">Bootstrap</span>
+                        </div>
+                        <p>Portfolio website for Dr. Ronald Keng'ara Tombe, a professional in academia and tech.</p>
+                        <a href="https://ronaldtombe.co.ke/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AIAA-Kenya">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>AIAA-Kenya.org</h3>
+                        <div class="portfolio-tech">
+                            <span class="tech-item">Django</span>
+                            <span class="tech-item">Vue.js</span>
+                            <span class="tech-item">SQLite</span>
+                            <span class="tech-item">Bootstrap</span>
+                        </div>
+                        <p>NGO providing tech solutions to Kenya's agricultural sector.</p>
+                        <a href="https://aiaa-kenya.org/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="DeepKenTom">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>DeepKenTom.com</h3>
+                        <div class="portfolio-tech">
+                            <span class="tech-item">Django</span>
+                            <span class="tech-item">Vue.js</span>
+                            <span class="tech-item">SQLite</span>
+                            <span class="tech-item">Bootstrap</span>
+                        </div>
+                        <p>Software development company specializing in customized solutions.</p>
+                        <a href="https://deepkentom.com/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ulubuto">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Ulubuto Gender Equity Organization</h3>
+                        <div class="portfolio-tech">
+                            <span class="tech-item">PHP</span>
+                            <span class="tech-item">Laravel</span>
+                            <span class="tech-item">MySQL</span>
+                        </div>
+                        <p>Website advocating for gender equity through education and advocacy.</p>
+                        <a href="https://unashamedcharity116.000webhostapp.com/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Driving School">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Sunshine Driving School Management</h3>
+                        <div class="portfolio-tech">
+                            <span class="tech-item">PHP</span>
+                            <span class="tech-item">Laravel</span>
+                            <span class="tech-item">Vue.js</span>
+                            <span class="tech-item">Tailwind</span>
+                        </div>
+                        <p>Co-developed a management application to improve operational efficiency.</p>
+                        <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references">
+        <div class="container">
+            <div class="section-title">
+                <h2>References</h2>
+            </div>
+            <div class="references-grid">
+                <div class="reference-card">
+                    <h3>Dr. Ronald Tombe</h3>
+                    <p class="reference-title">Co-Founder AI AA NGO, CEO DeepKenTom</p>
+                    <div class="reference-contact">
+                        <a href="tel:+254710791596"><i class="fas fa-phone"></i> +254 710 791 596</a>
+                    </div>
+                </div>
+                
+                <div class="reference-card">
+                    <h3>Mr. Lawrence Kirui</h3>
+                    <p class="reference-title">ICT Manager, County Government of Trans Nzoia</p>
+                    <div class="reference-contact">
+                        <a href="tel:+254722158146"><i class="fas fa-phone"></i> +254 722 158 146</a>
+                    </div>
+                </div>
+                
+                <div class="reference-card">
+                    <h3>Dr. Teresa Abuya</h3>
+                    <p class="reference-title">Chairperson, Department of Information Science and Technology, Kisii University</p>
+                    <div class="reference-contact">
+                        <a href="tel:+254720501292"><i class="fas fa-phone"></i> +254 720 501 292</a>
+                    </div>
+                </div>
+                
+                <div class="reference-card">
+                    <h3>Ms. Vera Makori</h3>
+                    <p class="reference-title">Lecturer, Kisii University</p>
+                    <div class="reference-contact">
+                        <a href="tel:+254719203682"><i class="fas fa-phone"></i> +254 719 203 682</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="https://github.com/Wanyangu1" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:amosclinton196@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+254114290760"><i class="fas fa-phone"></i></a>
+                <a href="https://acw-portfolio.afroartsafary.com/" target="_blank"><i class="fas fa-globe"></i></a>
+            </div>
+            <p class="copyright">&copy; <span id="year"></span> Amos Clinton Wanyangu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
