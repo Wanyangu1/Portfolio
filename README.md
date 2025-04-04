@@ -1,7 +1,5 @@
 # Amos Clinton Wanyangu - Professional Portfolio
 
-![Project Screenshot](https://via.placeholder.com/800x500.png?text=Portfolio+Screenshot)
-
 A modern, responsive portfolio website showcasing my skills, experience, and projects as an IT professional.
 
 ## Features ✨
